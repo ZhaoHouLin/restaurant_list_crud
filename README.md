@@ -18,12 +18,12 @@
 ## 安裝與執行方式
 **1.打開終端機輸入以下指令複製專案到電腦上**
 ```git=
-git clone
+git clone https://github.com/ZhaoHouLin/restaurant_list.git
 ```
 
 **2.進入專案資料夾**
 ```=
-cd
+cd restaurant_list
 ```
 
 **3.使用VSCode開啟**
