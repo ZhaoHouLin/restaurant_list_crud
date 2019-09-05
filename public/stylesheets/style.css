@@ -3,6 +3,10 @@
   font-weight: 700;
   transition: 0.5s;
 }
+* button {
+  border: none;
+  background: transparent;
+}
 header {
   overflow: hidden;
 }
@@ -98,5 +102,13 @@ header {
   bottom: 16px;
 }
 .crud i {
+  color: #f00;
+}
+.detailCrud {
+  position: absolute;
+  font-size: 36px;
+  right: 16px;
+}
+.detailCrud i {
   color: #f00;
 }
