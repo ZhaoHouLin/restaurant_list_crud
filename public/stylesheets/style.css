@@ -92,3 +92,11 @@ header {
     height: auto;
   }
 }
+.crud {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+}
+.crud i {
+  color: #f00;
+}
