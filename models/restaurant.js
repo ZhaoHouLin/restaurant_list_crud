@@ -3,8 +3,8 @@ const Schema = mongoose.Schema;
 
 const restaurantSchema = new Schema({
   name: {
-    type: String, // 資料型別是字串
-    required: true // 這是個必填欄位
+    type: String // 資料型別是字串
+    // required: true // 這是個必填欄位
   },
   name_en: {
     type: String
@@ -19,8 +19,8 @@ const restaurantSchema = new Schema({
     type: String
   },
   phone: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   },
   google_map: {
     type: String
@@ -29,8 +29,8 @@ const restaurantSchema = new Schema({
     type: Number
   },
   description: {
-    type: String,
-    required: true
+    type: String
+    // required: true
   }
 });
 
