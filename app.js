@@ -105,7 +105,7 @@ app.post("/restaurants/:id/delete", (req, res) => {
 });
 
 app.get("/restaurants/:restaurant_id", (req, res) => {
-  const restaurant = restaurantList.results.find(restaurant => {
+  const restaurant = Restaurant.results.find(restaurant => {
     return restaurant.id.toString() === req.params.restaurant_id;
   });
   res.render("show", { restaurant: restaurant });
@@ -117,7 +117,7 @@ function lowerCaseInc(searchword, keyword) {
 
 app.get("/search", (req, res) => {
   const keyword = req.query.keyword;
-  const restaurants = restaurantList.results.filter(restaurant => {
+  const restaurants = Restaurant.filter(restaurant => {
     const name = restaurant.name;
     const category = restaurant.category;
     return lowerCaseInc(name, keyword) || lowerCaseInc(category, keyword);
