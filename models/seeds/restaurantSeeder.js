@@ -1,7 +1,6 @@
-const restaurants = require("/restaurant.json");
-
+const restaurants = require("../restaurant.json");
 const mongoose = require("mongoose");
-const RestaurantList = require("../restaurant");
+const Restaurant = require("../restaurant");
 
 mongoose.connect("mongodb://localhost/restaurant", {
   useNewUrlParser: true
@@ -9,11 +8,15 @@ mongoose.connect("mongodb://localhost/restaurant", {
 
 const db = mongoose.connection;
 
+db.on("error", () => {
+  console.log("db error");
+});
+
 db.once("open", () => {
   console.log("db connected!");
 
-  for (var i = 0; i < 10; i++) {
-    RestaurantList.create(restaurants.results[i]);
+  for (var i = 0; i < restaurants.results.length; i++) {
+    Restaurant.create(restaurants.results[i]);
   }
 
   console.log("done");

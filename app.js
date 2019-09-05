@@ -29,44 +29,40 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 app.use(express.static("public"));
 
-// app.get("/", (req, res) => {
-//   res.render("index", { restaurants: restaurantList.results });
-// });
-
 // 設定路由
 // 首頁
 app.get("/", (req, res) => {
   Restaurant.find((err, restaurants) => {
     if (err) return console.log(err);
-    return res.render("index", { restaurants: restaurant.results });
+    return res.render("index", { restaurants: restaurants });
   });
 });
 // 列出全部 餐廳
-app.get("/todos", (req, res) => {
+app.get("/restaurants", (req, res) => {
   res.send("列出所有 Todo");
 });
 // 新增一筆 餐廳 頁面
-app.get("/todos/new", (req, res) => {
+app.get("/restaurants/new", (req, res) => {
   res.send("新增 Todo 頁面");
 });
 // 顯示一筆 餐廳 的詳細內容
-app.get("/todos/:id", (req, res) => {
+app.get("/restaurants/:id", (req, res) => {
   res.send("顯示 Todo 的詳細內容");
 });
 // 新增一筆  餐廳
-app.post("/todos", (req, res) => {
+app.post("/restaurants", (req, res) => {
   res.send("建立 Todo");
 });
 // 修改 餐廳 頁面
-app.get("/todos/:id/edit", (req, res) => {
+app.get("/restaurants/:id/edit", (req, res) => {
   res.send("修改 Todo 頁面");
 });
 // 修改 餐廳
-app.post("/todos/:id/edit", (req, res) => {
+app.post("/restaurants/:id/edit", (req, res) => {
   res.send("修改 Todo");
 });
 // 刪除 餐廳
-app.post("/todos/:id/delete", (req, res) => {
+app.post("/restaurants/:id/delete", (req, res) => {
   res.send("刪除 Todo");
 });
 
