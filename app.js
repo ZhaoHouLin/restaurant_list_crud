@@ -1,4 +1,3 @@
-// const restaurantList = require("./restaurant.json");
 const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
@@ -104,25 +103,23 @@ app.post("/restaurants/:id/delete", (req, res) => {
   });
 });
 
-app.get("/restaurants/:restaurant_id", (req, res) => {
-  const restaurant = Restaurant.results.find(restaurant => {
-    return restaurant.id.toString() === req.params.restaurant_id;
-  });
-  res.render("show", { restaurant: restaurant });
-});
-
 function lowerCaseInc(searchword, keyword) {
   return searchword.toLowerCase().includes(keyword.toLowerCase());
 }
 
 app.get("/search", (req, res) => {
   const keyword = req.query.keyword;
-  const restaurants = Restaurant.filter(restaurant => {
-    const name = restaurant.name;
-    const category = restaurant.category;
-    return lowerCaseInc(name, keyword) || lowerCaseInc(category, keyword);
+  Restaurant.find((err, restaurants) => {
+    if (err) return console.error(err);
+
+    const results = restaurants.filter(restaurant => {
+      const name = restaurant.name;
+      const category = restaurant.category;
+      return lowerCaseInc(name, keyword) || lowerCaseInc(category, keyword);
+    });
+
+    return res.render("index", { restaurants: results, keyword: keyword });
   });
-  res.render("index", { restaurants: restaurants, keyword: keyword });
 });
 
 app.listen(port, () => {

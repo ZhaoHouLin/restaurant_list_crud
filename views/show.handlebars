@@ -18,7 +18,7 @@
     <div class="col-12 col-md-10 mx-auto">
       <div class="detailCrud">
         <a href="/restaurants/{{{restaurant.id}}}/edit"><i class="fas fa-edit"></i></a>
-        <a href="/restaurants/{{{restaurant.id}}}"><i class="fas fa-chevron-circle-down"></i></a>
+        {{!-- <a href="/restaurants/{{{restaurant.id}}}"><i class="fas fa-chevron-circle-down"></i></a> --}}
         <form action="/restaurants/{{{restaurant.id}}}/delete" method="POST" style="display: inline;">
           <button type="submit"><i class="fas fa-trash-alt"></i></button>
         </form>
