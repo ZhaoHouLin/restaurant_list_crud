@@ -7,6 +7,14 @@ const bodyParser = require("body-parser");
 const app = express();
 const port = 3000;
 
+const Restaurant = require("./models/restaurant");
+
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+app.use(express.static("public"));
+
 mongoose.connect("mongodb://localhost/restaurant", {
   useNewUrlParser: true
 });
@@ -21,14 +29,6 @@ db.once("open", () => {
   console.log("mongodb connected!");
 });
 
-const Restaurant = require("./models/restaurant");
-
-app.use(bodyParser.urlencoded({ extended: true }));
-
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-app.set("view engine", "handlebars");
-app.use(express.static("public"));
-
 // 設定路由
 // 首頁
 app.get("/", (req, res) => {
@@ -39,7 +39,7 @@ app.get("/", (req, res) => {
 });
 // 列出全部 餐廳
 app.get("/restaurants", (req, res) => {
-  res.send("列出所有 Todo");
+  return res.redirect("/");
 });
 // 新增一筆 餐廳 頁面
 app.get("/restaurants/new", (req, res) => {
