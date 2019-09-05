@@ -43,7 +43,7 @@ app.get("/restaurants", (req, res) => {
 });
 // 新增一筆 餐廳 頁面
 app.get("/restaurants/new", (req, res) => {
-  res.send("新增 Todo 頁面");
+  return res.render("new");
 });
 // 顯示一筆 餐廳 的詳細內容
 app.get("/restaurants/:id", (req, res) => {
@@ -51,7 +51,19 @@ app.get("/restaurants/:id", (req, res) => {
 });
 // 新增一筆  餐廳
 app.post("/restaurants", (req, res) => {
-  res.send("建立 Todo");
+  const restaurant = new Restaurant({
+    name: req.body.name,
+    category: req.body.category,
+    image: req.body.image,
+    location: req.body.location,
+    phone: req.body.phone,
+    google_map: req.body.google_map,
+    description: req.body.description
+  });
+  restaurant.save(err => {
+    if (err) return console.error(err);
+    return res.redirect("/");
+  });
 });
 // 修改 餐廳 頁面
 app.get("/restaurants/:id/edit", (req, res) => {
