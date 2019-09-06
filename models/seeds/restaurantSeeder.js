@@ -15,9 +15,7 @@ db.on("error", () => {
 db.once("open", () => {
   console.log("db connected!");
 
-  for (var i = 0; i < restaurants.results.length; i++) {
-    Restaurant.create(restaurants.results[i]);
-  }
+  Restaurant.create(restaurants.results);
 
   console.log("done");
 });

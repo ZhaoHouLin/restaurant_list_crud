@@ -32,12 +32,24 @@
     </div>
     <div class="sort-bar col">
       <h4 class="mb-2">餐廳排序：</h4>
-      <select class="custom-select custom-select-md">
+      {{!-- <div class="dropdown-menu"> --}}
+      <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">名稱</a>
+      <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">名稱</a>
+      <a class="dropdown-item" href="/?sortTarget=category&sortType=asc">類別</a>
+      <a class="dropdown-item" href="/?sortTarget=location&sortType=asc">地區</a>
+      {{!-- </div> --}}
+
+      {{!-- <select class="custom-select custom-select-md">
         <option selected>Sort</option>
-        <option value="name">名稱</option>
+        <a href="/search?sortTarget=name&sortType=asc">
+          <option value="name">
+            名稱
+          </option>
+        </a>
+
         <option value="category">類別</option>
         <option value="3">地區</option>
-      </select>
+      </select> --}}
     </div>
   </div>
 
