@@ -49,6 +49,9 @@ header {
 .search-bar .search-bar-inner h4 {
   color: #9b4b4b;
 }
+.sort-bar h4 {
+  color: #9b4b4b;
+}
 .form-control::placeholder {
   color: #aaa;
   font-size: 0.8rem;

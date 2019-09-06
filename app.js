@@ -34,34 +34,10 @@ db.once("open", () => {
 
 // 設定路由
 // 首頁
-app.get("/", (req, res) => {
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.log(err);
-    return res.render("index", { restaurants: restaurants });
-  });
-});
 
 // 載入路由器
+app.use("/", require("./routes/home"));
 app.use("/restaurants", require("./routes/restaurant"));
-
-function lowerCaseInc(searchword, keyword) {
-  return searchword.toLowerCase().includes(keyword.toLowerCase());
-}
-
-app.get("/search", (req, res) => {
-  const keyword = req.query.keyword;
-  Restaurant.find((err, restaurants) => {
-    if (err) return console.error(err);
-
-    const results = restaurants.filter(restaurant => {
-      const name = restaurant.name;
-      const category = restaurant.category;
-      return lowerCaseInc(name, keyword) || lowerCaseInc(category, keyword);
-    });
-
-    return res.render("index", { restaurants: results, keyword: keyword });
-  });
-});
 
 app.listen(port, () => {
   console.log(`http://localhost:${port}`);
