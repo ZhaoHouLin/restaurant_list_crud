@@ -2,6 +2,7 @@ const express = require("express");
 const exphbs = require("express-handlebars");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
+const methodOverride = require("method-override");
 
 const app = express();
 const port = 3000;
@@ -12,6 +13,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+app.use(methodOverride("_method"));
+
 app.use(express.static("public"));
 
 mongoose.connect("mongodb://localhost/restaurant", {
@@ -76,7 +80,7 @@ app.get("/restaurants/:id/edit", (req, res) => {
   });
 });
 // 修改 餐廳 資料
-app.post("/restaurants/:id/edit", (req, res) => {
+app.put("/restaurants/:id", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     restaurant.name = req.body.name;
@@ -93,7 +97,7 @@ app.post("/restaurants/:id/edit", (req, res) => {
   });
 });
 // 刪除 餐廳
-app.post("/restaurants/:id/delete", (req, res) => {
+app.delete("/restaurants/:id/delete", (req, res) => {
   Restaurant.findById(req.params.id, (err, restaurant) => {
     if (err) return console.error(err);
     restaurant.remove(err => {

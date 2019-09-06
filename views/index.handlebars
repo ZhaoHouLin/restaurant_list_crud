@@ -58,7 +58,7 @@
           <div class="crud">
             <a href="/restaurants/{{{this.id}}}/edit"><i class="fas fa-edit"></i></a>
             <a href="/restaurants/{{{this.id}}}"><i class="fas fa-chevron-circle-down"></i></a>
-            <form action="/restaurants/{{{this.id}}}/delete" method="POST" style="display: inline;">
+            <form action="/restaurants/{{{this.id}}}/delete?_method=DELETE" method="POST" style="display: inline;">
               <button type="submit"><i class="fas fa-trash-alt"></i></button>
             </form>
           </div>
