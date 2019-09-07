@@ -13,7 +13,7 @@ router.get("/", (req, res) => {
     .sort(sort)
     .exec((err, restaurants) => {
       if (err) return console.error(err);
-      return res.render("index", { restaurants: restaurants });
+      return res.render("index", { restaurants: restaurants, keyword: req.query.keyword });
     });
 });
 

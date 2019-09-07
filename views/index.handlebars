@@ -17,9 +17,9 @@
 
 <!-- search bar -->
 <div class="container search-bar">
-  <div class="search-bar-outer row">
+  <div class="search-bar-outer">
     <div class="search-bar-inner ">
-      <form action="/search" class="col">
+      <form action="/search" class="row">
         <h4 class="mb-2">尋找餐廳：</h4>
         <div class="input-group">
           <input type="text" name="keyword" value="{{keyword}}" class="form-control" placeholder="輸入餐廳、分類"
@@ -27,29 +27,22 @@
           <div class="input-group-append">
             <button class="btn btn-major" type="submit" id="search-button"><i class="fas fa-search"></i></button>
           </div>
+          <div class="dropdown input-group-append">
+            <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
+              餐廳排序：
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">名稱 A->Z</a>
+              <a class="dropdown-item" href="/?sortTarget=name&sortType=desc">名稱 Z->A</a>
+              <a class="dropdown-item" href="/?sortTarget=category&sortType=asc">類別</a>
+              <a class="dropdown-item" href="/?sortTarget=location&sortType=asc">地區</a>
+              <a class="dropdown-item" href="/?sortTarget=rating&sortType=asc">評分 低->高</a>
+              <a class="dropdown-item" href="/?sortTarget=rating&sortType=desc">評分 高->低</a>
+            </div>
+          </div>
         </div>
       </form>
-    </div>
-    <div class="sort-bar col">
-      <h4 class="mb-2">餐廳排序：</h4>
-      {{!-- <div class="dropdown-menu"> --}}
-      <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">名稱</a>
-      <a class="dropdown-item" href="/?sortTarget=name&sortType=asc">名稱</a>
-      <a class="dropdown-item" href="/?sortTarget=category&sortType=asc">類別</a>
-      <a class="dropdown-item" href="/?sortTarget=location&sortType=asc">地區</a>
-      {{!-- </div> --}}
-
-      {{!-- <select class="custom-select custom-select-md">
-        <option selected>Sort</option>
-        <a href="/search?sortTarget=name&sortType=asc">
-          <option value="name">
-            名稱
-          </option>
-        </a>
-
-        <option value="category">類別</option>
-        <option value="3">地區</option>
-      </select> --}}
     </div>
   </div>
 
