@@ -50,11 +50,17 @@
           <input type="text" placeholder="phone" name="phone" value="{{restaurant.phone}}">
         </p>
 
+        <p class="mb-1">
+          <span class="text-secondary">
+            <i class="fas fa-star fa-xs pr-2"></i>
+            評分：
+          </span>
+          <input type="text" placeholder="rating" name="phone" value="{{restaurant.rating}}">
+        </p>
+
         <textarea type="text" placeholder="description" name="description">{{restaurant.description}}</textarea>
 
 
-        {{!-- <img class="rounded mx-auto d-block mb-4 w-100" src={{restaurant.image}} alt={{restaurant.name}}
-          style="max-width: 600px;"> --}}
         圖片連結網址:
         <input class="edit-image" type="text" placeholder="image" name="image" value="{{restaurant.image}}">
         <br>
